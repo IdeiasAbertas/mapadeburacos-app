@@ -12,6 +12,7 @@ class AddBuracoForm extends StatefulWidget {
 
 class _AddBuracoFormState extends State<AddBuracoForm> {
   bool? checkBoxValue = false;
+  List<String> photosList = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,16 +46,28 @@ class _AddBuracoFormState extends State<AddBuracoForm> {
                 height: 10,
               ),
               Row(
-                children: const [
-                  AddPhotoWidget(),
-                  SizedBox(
+                children: [
+                  AddPhotoWidget(
+                    onChanged: (value) {
+                      photosList.add(value);
+                    },
+                  ),
+                  const SizedBox(
                     width: 10,
                   ),
-                  AddPhotoWidget(),
-                  SizedBox(
+                  AddPhotoWidget(
+                    onChanged: (value) {
+                      photosList.add(value);
+                    },
+                  ),
+                  const SizedBox(
                     width: 10,
                   ),
-                  AddPhotoWidget(),
+                  AddPhotoWidget(
+                    onChanged: (value) {
+                      photosList.add(value);
+                    },
+                  ),
                 ],
               ),
               const SizedBox(

@@ -39,6 +39,10 @@ dependencies:
   flutter_svg: ^1.1.6
   dotted_border: ^2.0.0+3
   google_fonts: ^3.0.1
+  camera: ^0.10.0+4
+  path_provider: ^2.0.11
+  path: ^1.8.2
+  image_picker: ^0.8.6
   #google_fonts: ^3.0.1
 
 dev_dependencies:
