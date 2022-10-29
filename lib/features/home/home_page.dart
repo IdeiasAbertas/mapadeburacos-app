@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mapa_de_buracos_app_flutter/app/resources/theme.dart';
 import 'package:mapa_de_buracos_app_flutter/data/models/status_buraco_model.dart';
 import 'package:mapa_de_buracos_app_flutter/features/add_buraco_form/add_buraco_form.dart';
@@ -39,7 +40,7 @@ class HomePage extends StatelessWidget {
                         child: const Text(
                           'LOGO\nHERE',
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, height: 0.9, fontSize: 15, color: Colors.white),
+                              fontWeight: FontWeight.bold, height: 0.9, fontSize: 14, color: Colors.white),
                         ),
                       ),
                       actions: [
@@ -96,14 +97,17 @@ class HomePage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           RichText(
-                            text: const TextSpan(children: [
+                            text: TextSpan(children: [
                               TextSpan(
                                 text: 'Relatório ',
-                                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                                style: GoogleFonts.poppins(
+                                    textStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
                               ),
                               TextSpan(
                                 text: ' Nesta localidade',
-                                style: TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
+                                style: GoogleFonts.poppins(
+                                  textStyle: const TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
+                                ),
                               ),
                             ]),
                           ),

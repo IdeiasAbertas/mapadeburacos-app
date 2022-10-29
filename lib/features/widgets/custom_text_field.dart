@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mapa_de_buracos_app_flutter/app/resources/theme.dart';
 import 'package:mapa_de_buracos_app_flutter/features/view_buracos/view_buracos_page.dart';
 
@@ -14,10 +15,11 @@ class CustomTextField extends StatelessWidget {
       decoration: InputDecoration(
         filled: true,
         hintText: 'Procure lugares para descobrir buracos',
-        hintStyle: const TextStyle(
+        hintStyle: GoogleFonts.poppins(
+            textStyle: const TextStyle(
           fontSize: 10,
           color: AppTheme.krukutecaGray002,
-        ),
+        )),
         suffixIconConstraints: const BoxConstraints(minHeight: 19, minWidth: 22),
         suffixIcon: GestureDetector(
           onTap: () {

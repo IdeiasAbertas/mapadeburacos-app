@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mapa_de_buracos_app_flutter/app/resources/theme.dart';
 import 'package:mapa_de_buracos_app_flutter/data/models/status_buraco_model.dart';
 import 'package:mapa_de_buracos_app_flutter/features/view_buraco_info/view_buraco_info_page.dart';
@@ -45,7 +46,7 @@ class ViewBuracosPage extends StatelessWidget {
                   crossAxisSpacing: 10,
                   mainAxisSpacing: 10,
                   crossAxisCount: 2,
-                  childAspectRatio: 0.8,
+                  childAspectRatio: 0.79,
                   children: const <Widget>[
                     BuracoimageDatasGridWidget(
                       index: 1,
@@ -87,10 +88,11 @@ class ViewBuracosPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     RichText(
-                      text: const TextSpan(children: [
+                      text: TextSpan(children: [
                         TextSpan(
                           text: 'Relatório ',
-                          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                          style: GoogleFonts.poppins(
+                              textStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
                         ),
                       ]),
                     ),

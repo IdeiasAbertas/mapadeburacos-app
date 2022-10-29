@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mapa_de_buracos_app_flutter/features/home/home_page.dart';
 
 void main() {
@@ -13,7 +14,18 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Krukuteca',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.blue, brightness: Brightness.dark),
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        brightness: Brightness.dark,
+        textTheme: TextTheme(
+          headline1: GoogleFonts.poppins(),
+          headline6: GoogleFonts.poppins(),
+          bodyText2: GoogleFonts.poppins(),
+        ),
+        inputDecorationTheme: InputDecorationTheme(
+          hintStyle: GoogleFonts.poppins(),
+        ),
+      ),
       home: const HomePage(),
     );
   }
