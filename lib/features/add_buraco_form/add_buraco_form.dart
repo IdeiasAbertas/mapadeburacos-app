@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:location/location.dart';
 import 'package:mapa_de_buracos_app_flutter/app/resources/theme.dart';
 import 'package:mapa_de_buracos_app_flutter/features/widgets/add_photo_widget.dart';
 
@@ -11,8 +12,48 @@ class AddBuracoForm extends StatefulWidget {
 }
 
 class _AddBuracoFormState extends State<AddBuracoForm> {
-  bool? checkBoxValue = false;
   List<String> photosList = [];
+  late LocationData _currentPosition;
+  late String _address;
+  Location location = Location();
+
+  fetchLocation() async {
+    bool _serviceEnabled;
+    PermissionStatus _permissionGranted;
+
+    _serviceEnabled = await location.serviceEnabled();
+    if (!_serviceEnabled) {
+      _serviceEnabled = await location.requestService();
+      if (!_serviceEnabled) {
+        //pop the page
+        return;
+      }
+    }
+
+    _permissionGranted = await location.hasPermission();
+    if (_permissionGranted == PermissionStatus.denied) {
+      _permissionGranted = await location.requestPermission();
+      if (_permissionGranted != PermissionStatus.granted) {
+        //TODO:add alert screen to user grant permission and let him know
+        Navigator.pop(context, 'permissionDeniedForever');
+        return;
+      }
+    }
+
+    _currentPosition = await location.getLocation();
+    location.onLocationChanged.listen((LocationData currentLocation) {
+      setState(() {
+        _currentPosition = currentLocation;
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    fetchLocation();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,12 +120,8 @@ class _AddBuracoFormState extends State<AddBuracoForm> {
                 visualDensity: VisualDensity.compact,
                 activeColor: AppTheme.krukutecaGreen001,
                 title: const Text('Pegar minha localização atual'),
-                value: checkBoxValue,
-                onChanged: (newValue) {
-                  setState(() {
-                    checkBoxValue = newValue;
-                  });
-                },
+                value: true,
+                onChanged: (newValue) {},
                 checkColor: Colors.black,
                 controlAffinity: ListTileControlAffinity.leading,
               ),

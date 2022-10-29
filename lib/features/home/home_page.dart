@@ -70,8 +70,33 @@ class HomePage extends StatelessWidget {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        Navigator.of(context)
-                            .push(MaterialPageRoute(builder: (context) => const AddBuracoForm()));
+                        final result = Navigator.of(context)
+                            .push(
+                          MaterialPageRoute(
+                            builder: (context) => const AddBuracoForm(),
+                          ),
+                        )
+                            .then((value) {
+                          if (value.toString() == 'permissionDeniedForever') {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: const Text('Localização obrigatória'),
+                                  content: const Text(
+                                      "Para adicionar um buraco, o utilizador deve ativar a permissão de acesso à localização nas configurações da app ou desinstalar e voltar a instalar a app."),
+                                  actions: [
+                                    ElevatedButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: const Text('Ok')),
+                                  ],
+                                );
+                              },
+                            );
+                          }
+                        });
                       },
                       child: Container(
                         height: 40,

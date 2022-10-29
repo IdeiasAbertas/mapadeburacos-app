@@ -43,6 +43,7 @@ dependencies:
   path_provider: ^2.0.11
   path: ^1.8.2
   image_picker: ^0.8.6
+  location: ^4.4.0
   #google_fonts: ^3.0.1
 
 dev_dependencies:
