@@ -40,39 +40,16 @@ class ViewBuracosPage extends StatelessWidget {
                 height: 20,
               ),
               Expanded(
-                child: GridView.count(
+                child: GridView.builder(
+                  itemBuilder: (context, index) => BuracoimageDatasGridWidget(
+                    index: index,
+                  ),
                   primary: false,
                   padding: const EdgeInsets.all(1),
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
-                  crossAxisCount: 2,
-                  childAspectRatio: 0.79,
-                  children: const <Widget>[
-                    BuracoimageDatasGridWidget(
-                      index: 1,
-                    ),
-                    BuracoimageDatasGridWidget(
-                      index: 2,
-                    ),
-                    BuracoimageDatasGridWidget(
-                      index: 3,
-                    ),
-                    BuracoimageDatasGridWidget(
-                      index: 4,
-                    ),
-                    BuracoimageDatasGridWidget(
-                      index: 5,
-                    ),
-                    BuracoimageDatasGridWidget(
-                      index: 6,
-                    ),
-                    BuracoimageDatasGridWidget(
-                      index: 7,
-                    ),
-                    BuracoimageDatasGridWidget(
-                      index: 8,
-                    ),
-                  ],
+                  itemCount: 25,
+                  shrinkWrap: true,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      childAspectRatio: 0.79, crossAxisCount: 2, crossAxisSpacing: 10, mainAxisSpacing: 10),
                 ),
               ),
               Container(

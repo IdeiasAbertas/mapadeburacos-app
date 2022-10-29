@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mapa_de_buracos_app_flutter/app/resources/theme.dart';
+import 'package:mapa_de_buracos_app_flutter/features/widgets/avatar_widget.dart';
+import 'package:mapa_de_buracos_app_flutter/features/widgets/comment_widget.dart';
 
 class ViewBuracoInfoPage extends StatelessWidget {
   final int index;
@@ -131,14 +133,7 @@ class ViewBuracoInfoPage extends StatelessWidget {
                             const SizedBox(
                               height: 5,
                             ),
-                            const CommentWidget(),
-                            const CommentWidget(),
-                            const CommentWidget(),
-                            const CommentWidget(),
-                            const CommentWidget(),
-                            const CommentWidget(),
-                            const CommentWidget(),
-                            const CommentWidget(),
+                            for (var a = 0; a < 25; a++) const CommentWidget(),
                           ],
                         ),
                       ),
@@ -203,54 +198,6 @@ class ViewBuracoInfoPage extends StatelessWidget {
               ),
             )
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class CommentWidget extends StatelessWidget {
-  const CommentWidget({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        const AvatarWidget(color: AppTheme.krukutecaRed001, name: 'MQ'),
-        const SizedBox(
-          width: 5,
-        ),
-        Container(
-          margin: const EdgeInsets.only(top: 15),
-          decoration: BoxDecoration(color: AppTheme.krukutecaGray006, borderRadius: BorderRadius.circular(5)),
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-          child: const Text(
-            'Este buraco demorou muito para ser fechado, mas em fim!\nEste buraco demorou muito para ',
-            style: TextStyle(fontSize: 10, color: AppTheme.krukutecaGray005, fontWeight: FontWeight.w500),
-          ),
-        )
-      ],
-    );
-  }
-}
-
-class AvatarWidget extends StatelessWidget {
-  final String name;
-  final Color color;
-  const AvatarWidget({Key? key, required this.name, required this.color}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 27,
-      width: 27,
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(50), color: color),
-      child: Center(
-        child: Text(
-          name,
-          style: const TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w700),
         ),
       ),
     );
