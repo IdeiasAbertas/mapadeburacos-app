@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mapa_de_buracos_app_flutter/app/resources/theme.dart';
 import 'package:mapa_de_buracos_app_flutter/data/models/status_buraco_model.dart';
+import 'package:mapa_de_buracos_app_flutter/features/view_buraco_info/view_buraco_info_page.dart';
 import 'package:mapa_de_buracos_app_flutter/features/widgets/counter_status_widget.dart';
 import 'package:mapa_de_buracos_app_flutter/features/widgets/custom_text_field.dart';
 
@@ -33,7 +34,7 @@ class ViewBuracosPage extends StatelessWidget {
               const SizedBox(
                 height: 25,
               ),
-              const CustomTextField(),
+              const SizedBox(height: 40, child: CustomTextField()),
               const SizedBox(
                 height: 20,
               ),
@@ -46,10 +47,30 @@ class ViewBuracosPage extends StatelessWidget {
                   crossAxisCount: 2,
                   childAspectRatio: 0.8,
                   children: const <Widget>[
-                    BuracoimageDatasGridWidget(),
-                    BuracoimageDatasGridWidget(),
-                    BuracoimageDatasGridWidget(),
-                    BuracoimageDatasGridWidget(),
+                    BuracoimageDatasGridWidget(
+                      index: 1,
+                    ),
+                    BuracoimageDatasGridWidget(
+                      index: 2,
+                    ),
+                    BuracoimageDatasGridWidget(
+                      index: 3,
+                    ),
+                    BuracoimageDatasGridWidget(
+                      index: 4,
+                    ),
+                    BuracoimageDatasGridWidget(
+                      index: 5,
+                    ),
+                    BuracoimageDatasGridWidget(
+                      index: 6,
+                    ),
+                    BuracoimageDatasGridWidget(
+                      index: 7,
+                    ),
+                    BuracoimageDatasGridWidget(
+                      index: 8,
+                    ),
                   ],
                 ),
               ),
@@ -91,71 +112,84 @@ class ViewBuracosPage extends StatelessWidget {
 }
 
 class BuracoimageDatasGridWidget extends StatelessWidget {
-  const BuracoimageDatasGridWidget({
-    Key? key,
-  }) : super(key: key);
+  final int index;
+  const BuracoimageDatasGridWidget({Key? key, required this.index}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Image.asset(
-          ('assets/images/buraco.png'),
-        ),
-        const SizedBox(
-          height: 5,
-        ),
-        const Text(
-          'Buraco Vila de Viana',
-          style: TextStyle(fontSize: 15, fontWeight: FontWeight.w800),
-        ),
-        const SizedBox(
-          height: 5,
-        ),
-        Row(
-          children: [
-            SvgPicture.asset(
-              'assets/icons/location-icon.svg',
-              width: 8,
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => ViewBuracoInfoPage(
+              index: index,
             ),
-            const SizedBox(
-              width: 5,
+          ),
+        );
+      },
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Hero(
+            tag: 'buraco$index',
+            child: Image.asset(
+              ('assets/images/buraco.png'),
             ),
-            RichText(
-              text: const TextSpan(children: [
-                TextSpan(
-                  text: 'Luanda -',
-                  style: TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
-                ),
-                TextSpan(
-                  text: ' Ponte Partida',
-                  style: TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
-                ),
-              ]),
-            ),
-          ],
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        Row(
-          children: [
-            SvgPicture.asset(
-              'assets/icons/comment-icon.svg',
-              color: AppTheme.krukutecaGray004,
-            ),
-            const SizedBox(
-              width: 5,
-            ),
-            const Text(
-              '123',
-              style: TextStyle(fontSize: 10, color: AppTheme.krukutecaGray004),
-            )
-          ],
-        )
-      ],
+          ),
+          const SizedBox(
+            height: 5,
+          ),
+          const Text(
+            'Buraco Vila de Viana',
+            style: TextStyle(fontSize: 15, fontWeight: FontWeight.w800),
+          ),
+          const SizedBox(
+            height: 5,
+          ),
+          Row(
+            children: [
+              SvgPicture.asset(
+                'assets/icons/location-icon.svg',
+                width: 8,
+              ),
+              const SizedBox(
+                width: 5,
+              ),
+              RichText(
+                text: const TextSpan(children: [
+                  TextSpan(
+                    text: 'Luanda -',
+                    style: TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
+                  ),
+                  TextSpan(
+                    text: ' Ponte Partida',
+                    style: TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
+                  ),
+                ]),
+              ),
+            ],
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Row(
+            children: [
+              SvgPicture.asset(
+                'assets/icons/comment-icon.svg',
+                color: AppTheme.krukutecaGray004,
+              ),
+              const SizedBox(
+                width: 5,
+              ),
+              const Text(
+                '123',
+                style: TextStyle(fontSize: 10, color: AppTheme.krukutecaGray004),
+              )
+            ],
+          )
+        ],
+      ),
     );
   }
 }

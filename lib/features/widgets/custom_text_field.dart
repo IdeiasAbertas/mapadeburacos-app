@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mapa_de_buracos_app_flutter/app/resources/theme.dart';
+import 'package:mapa_de_buracos_app_flutter/features/view_buracos/view_buracos_page.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
@@ -18,10 +19,17 @@ class CustomTextField extends StatelessWidget {
           color: AppTheme.krukutecaGray002,
         ),
         suffixIconConstraints: const BoxConstraints(minHeight: 19, minWidth: 22),
-        suffixIcon: Container(
-          margin: const EdgeInsets.only(right: 15),
-          child: SvgPicture.asset(
-            'assets/icons/filter-icon.svg',
+        suffixIcon: GestureDetector(
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => const ViewBuracosPage()),
+            );
+          },
+          child: Container(
+            margin: const EdgeInsets.only(right: 15),
+            child: SvgPicture.asset(
+              'assets/icons/filter-icon.svg',
+            ),
           ),
         ),
         prefixIconConstraints: const BoxConstraints(minHeight: 19, minWidth: 22),

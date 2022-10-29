@@ -18,39 +18,47 @@ class HomePage extends StatelessWidget {
             Container(
               color: AppTheme.backgroundColor,
             ),
+            SizedBox(
+              width: double.infinity,
+              child: Image.asset('assets/images/google-maps-dark-mode.jpeg', fit: BoxFit.cover),
+            ),
             Positioned(
               left: 0,
               top: 0,
               right: 0,
-              child: Column(
-                children: <Widget>[
-                  AppBar(
-                    elevation: 0.0,
-                    backgroundColor: Colors.transparent,
-                    leading: Container(
-                      margin: const EdgeInsets.only(top: 20, left: 15),
-                      child: const Text(
-                        'LOGO\nHERE',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, height: 0.9, fontSize: 15, color: Colors.white),
-                      ),
-                    ),
-                    actions: [
-                      Container(
-                        margin: const EdgeInsets.only(top: 10, right: 15),
-                        child: const Icon(
-                          Icons.settings,
-                          color: Colors.white,
+              child: Container(
+                color: AppTheme.backgroundColor,
+                padding: const EdgeInsets.only(bottom: 20),
+                child: Column(
+                  children: <Widget>[
+                    AppBar(
+                      elevation: 0.0,
+                      backgroundColor: Colors.transparent,
+                      leading: Container(
+                        margin: const EdgeInsets.only(top: 20, left: 15),
+                        child: const Text(
+                          'LOGO\nHERE',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, height: 0.9, fontSize: 15, color: Colors.white),
                         ),
-                      )
-                    ],
-                  ),
-                  Container(
-                    height: 65,
-                    padding: const EdgeInsets.only(top: 20, left: 10, right: 20),
-                    child: const CustomTextField(),
-                  )
-                ],
+                      ),
+                      actions: [
+                        Container(
+                          margin: const EdgeInsets.only(top: 10, right: 15),
+                          child: const Icon(
+                            Icons.settings,
+                            color: Colors.white,
+                          ),
+                        )
+                      ],
+                    ),
+                    Container(
+                      height: 65,
+                      padding: const EdgeInsets.only(top: 20, left: 10, right: 20),
+                      child: const CustomTextField(),
+                    ),
+                  ],
+                ),
               ),
             ),
             Positioned(
@@ -120,4 +128,3 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-
