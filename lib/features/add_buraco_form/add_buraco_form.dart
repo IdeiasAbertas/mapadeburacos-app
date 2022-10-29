@@ -1,5 +1,6 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mapa_de_buracos_app_flutter/app/resources/theme.dart';
 import 'package:mapa_de_buracos_app_flutter/features/widgets/add_photo_widget.dart';
 
@@ -102,9 +103,11 @@ class _AddBuracoFormState extends State<AddBuracoForm> {
                   decoration: InputDecoration(
                     filled: true,
                     hintText: 'Rua dos Mangueiras do Belo Monte',
-                    hintStyle: const TextStyle(
-                      fontSize: 10,
-                      color: AppTheme.krukutecaGray002,
+                    hintStyle: GoogleFonts.poppins(
+                      textStyle: const TextStyle(
+                        fontSize: 10,
+                        color: AppTheme.krukutecaGray002,
+                      ),
                     ),
                     suffixIconConstraints: const BoxConstraints(minHeight: 19, minWidth: 22),
                     prefixIconConstraints: const BoxConstraints(minHeight: 19, minWidth: 22),
@@ -142,9 +145,11 @@ class _AddBuracoFormState extends State<AddBuracoForm> {
                   decoration: InputDecoration(
                     filled: true,
                     hintText: 'Rua dos Mangueiras do Belo Monte',
-                    hintStyle: const TextStyle(
-                      fontSize: 10,
-                      color: AppTheme.krukutecaGray002,
+                    hintStyle: GoogleFonts.poppins(
+                      textStyle: const TextStyle(
+                        fontSize: 10,
+                        color: AppTheme.krukutecaGray002,
+                      ),
                     ),
                     suffixIconConstraints: const BoxConstraints(minHeight: 19, minWidth: 22),
                     prefixIconConstraints: const BoxConstraints(minHeight: 19, minWidth: 22),
