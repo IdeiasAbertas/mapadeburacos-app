@@ -19,59 +19,62 @@ class _AddPhotoWidgetState extends State<AddPhotoWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        picturePath = Navigator.of(context)
-            .push(
-          MaterialPageRoute(
-            builder: (context) => const TakePictureScreen(),
-          ),
-        )
-            .then((value) {
-          setState(() {
-            picturePath = value ?? '';
+    return Container(
+      margin: const EdgeInsets.only(right: 10),
+      child: GestureDetector(
+        onTap: () {
+          picturePath = Navigator.of(context)
+              .push(
+            MaterialPageRoute(
+              builder: (context) => const TakePictureScreen(),
+            ),
+          )
+              .then((value) {
+            setState(() {
+              picturePath = value ?? '';
+            });
+            widget.onChanged(value);
           });
-          widget.onChanged(value);
-        });
-      },
-      child: picturePath.toString().isNotEmpty
-          ? Container(
-              height: 80,
-              width: 80,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: FileImage(
-                      File(picturePath),
-                    ),
-                    fit: BoxFit.cover),
-              ),
-            )
-          : DottedBorder(
-              color: AppTheme.krukutecaGray002,
-              dashPattern: const [5, 5],
-              radius: const Radius.circular(50),
-              child: Container(
+        },
+        child: picturePath.toString().isNotEmpty
+            ? Container(
                 height: 80,
                 width: 80,
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(50)),
-                child: Center(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Icon(
-                        Icons.image,
-                        color: AppTheme.krukutecaGray003,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: FileImage(
+                        File(picturePath),
                       ),
-                      Text(
-                        'Add Foto',
-                        style: TextStyle(color: AppTheme.krukutecaGray002, fontSize: 10),
-                      )
-                    ],
+                      fit: BoxFit.cover),
+                ),
+              )
+            : DottedBorder(
+                color: AppTheme.krukutecaGray002,
+                dashPattern: const [5, 5],
+                radius: const Radius.circular(50),
+                child: Container(
+                  height: 80,
+                  width: 80,
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(50)),
+                  child: Center(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Icon(
+                          Icons.image,
+                          color: AppTheme.krukutecaGray003,
+                        ),
+                        Text(
+                          'Add Foto',
+                          style: TextStyle(color: AppTheme.krukutecaGray002, fontSize: 10),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
+      ),
     );
   }
 }

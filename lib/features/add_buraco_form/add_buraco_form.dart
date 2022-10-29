@@ -45,30 +45,19 @@ class _AddBuracoFormState extends State<AddBuracoForm> {
               const SizedBox(
                 height: 10,
               ),
-              Row(
-                children: [
-                  AddPhotoWidget(
-                    onChanged: (value) {
-                      photosList.add(value);
-                    },
+              SizedBox(
+                height: 80,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: List.generate(
+                    6,
+                    (i) => AddPhotoWidget(
+                      onChanged: (value) {
+                        photosList.add(value);
+                      },
+                    ),
                   ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  AddPhotoWidget(
-                    onChanged: (value) {
-                      photosList.add(value);
-                    },
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  AddPhotoWidget(
-                    onChanged: (value) {
-                      photosList.add(value);
-                    },
-                  ),
-                ],
+                ),
               ),
               const SizedBox(
                 height: 35,
