@@ -26,7 +26,7 @@ class _TakePictureScreenState extends State<TakePictureScreen> {
   loadCamera() async {
     cameras = await availableCameras();
     if (cameras != null) {
-      controller = CameraController(cameras![0], ResolutionPreset.max);
+      controller = CameraController(cameras![0], ResolutionPreset.max, enableAudio: false);
       //cameras[0] = first camera, change to 1 to another camera
 
       controller!.initialize().then((_) {
