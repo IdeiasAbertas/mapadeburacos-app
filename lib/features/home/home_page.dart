@@ -1,13 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mapa_de_buracos_app_flutter/app/resources/theme.dart';
 import 'package:mapa_de_buracos_app_flutter/data/models/status_buraco_model.dart';
 import 'package:mapa_de_buracos_app_flutter/features/add_buraco_form/add_buraco_form.dart';
 import 'package:mapa_de_buracos_app_flutter/features/widgets/counter_status_widget.dart';
 import 'package:mapa_de_buracos_app_flutter/features/widgets/custom_text_field.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  late GoogleMapController mapController;
+
+  final LatLng _center = const LatLng(-8.999384, 13.272335);
+
+  void _onMapCreated(GoogleMapController controller) async {
+    mapController = controller;
+    mapController.setMapStyle(await rootBundle.loadString('assets/map/nigth-theme.json'));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +35,12 @@ class HomePage extends StatelessWidget {
             Container(
               color: AppTheme.backgroundColor,
             ),
-            SizedBox(
-              width: double.infinity,
-              child: Image.asset('assets/images/google-maps-dark-mode.jpeg', fit: BoxFit.cover),
+            GoogleMap(
+              onMapCreated: _onMapCreated,
+              initialCameraPosition: CameraPosition(
+                target: _center,
+                zoom: 10,
+              ),
             ),
             Positioned(
               left: 0,
