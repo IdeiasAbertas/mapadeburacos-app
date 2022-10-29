@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mapa_de_buracos_app_flutter/app/resources/theme.dart';
 import 'package:mapa_de_buracos_app_flutter/data/models/status_buraco_model.dart';
+import 'package:mapa_de_buracos_app_flutter/features/add_buraco_form/add_buraco_form.dart';
 import 'package:mapa_de_buracos_app_flutter/features/widgets/counter_status_widget.dart';
 
 class HomePage extends StatelessWidget {
@@ -11,11 +12,6 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      bottomSheet: Container(
-        height: 300,
-        decoration: const BoxDecoration(color: Colors.black),
-        child: Column(),
-      ),
       body: SafeArea(
         child: Stack(
           children: <Widget>[
@@ -88,20 +84,26 @@ class HomePage extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Container(
-                      height: 40,
-                      width: 40,
-                      decoration: BoxDecoration(
-                          color: AppTheme.krukutecaGreen001, borderRadius: BorderRadius.circular(10)),
-                      child: const Icon(
-                        Icons.add,
-                        color: AppTheme.backgroundColor,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (context) => const AddBuracoForm()));
+                      },
+                      child: Container(
+                        height: 40,
+                        width: 40,
+                        decoration: BoxDecoration(
+                            color: AppTheme.krukutecaGreen001, borderRadius: BorderRadius.circular(10)),
+                        child: const Icon(
+                          Icons.add,
+                          color: AppTheme.backgroundColor,
+                        ),
                       ),
                     ),
                     Container(
                       margin: const EdgeInsets.only(left: 10, right: 10, bottom: 25, top: 5),
                       padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-                      height: 143,
+                      height: 133,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
                         color: AppTheme.krukutecaGray003,
