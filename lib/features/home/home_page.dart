@@ -20,9 +20,78 @@ class _HomePageState extends State<HomePage> {
 
   final LatLng _center = const LatLng(-8.999384, 13.272335);
 
+  Set<Marker> markers = {};
+
+  late BitmapDescriptor markerIcon;
+
+  @override
+  void initState() {
+    super.initState();
+    BitmapDescriptor.fromAssetImage(
+            const ImageConfiguration(size: Size(248, 248)), 'assets/icons/fechado-icon.png')
+        .then((onValue) {
+      markerIcon = onValue;
+    });
+  }
+
   void _onMapCreated(GoogleMapController controller) async {
     mapController = controller;
     mapController.setMapStyle(await rootBundle.loadString('assets/map/nigth-theme.json'));
+    
+    setState(() {
+      markers.add(Marker(
+        markerId: const MarkerId('1'),
+        position: const LatLng(-8.998291, 13.270590),
+        icon: markerIcon,
+        infoWindow: const InfoWindow(
+          title: 'Buraco do Kilamba',
+          snippet: 'Buraco aberto na via principal do Kilamba',
+        ),
+      ));
+      markers.add(Marker(
+        markerId: const MarkerId('2'),
+        position: const LatLng(-9.013333, 13.223593),
+        icon: markerIcon,
+        infoWindow: const InfoWindow(
+          title: 'Buraco na Estr. Lar Patriota',
+          snippet: 'Buraco fechado na via do Patriota',
+        ),
+      ));
+      markers.add(Marker(
+        markerId: const MarkerId('3'),
+        position: const LatLng(-8.898582, 13.364073),
+        icon: markerIcon,
+        infoWindow: const InfoWindow(
+          title: 'Buraco na estrada de Catete',
+          snippet: 'Buraco fechado na estrada de Catete',
+        ),
+      ));
+
+      markers.add(Marker(
+        markerId: const MarkerId('4'),
+        position: const LatLng(-9.025211, 13.405553),
+        icon: markerIcon,
+        infoWindow: const InfoWindow(
+          title: 'Buraco na estrada do Zango',
+          snippet: 'Buraco fechado na estrada do Zango II',
+        ),
+      ));
+
+      markers.add(Marker(
+        markerId: const MarkerId('5'),
+        position: const LatLng(-8.952324, 13.152532),
+        icon: markerIcon,
+        infoWindow: const InfoWindow(
+          title: 'Buraco na estrada nacional 100',
+          snippet: 'Buraco fechado frente ao KFC do Benfica.',
+        ),
+      ));
+    });
+  }
+
+  Future<void> _goToTheLake() async {
+    mapController.animateCamera(
+        CameraUpdate.newCameraPosition(const CameraPosition(target: LatLng(-8.952324, 13.152532))));
   }
 
   @override
@@ -41,6 +110,8 @@ class _HomePageState extends State<HomePage> {
                 target: _center,
                 zoom: 10,
               ),
+              markers: markers,
+              zoomControlsEnabled: false,
             ),
             Positioned(
               left: 0,
